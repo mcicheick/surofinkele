@@ -1,0 +1,126 @@
+#{extends 'main.html' /}
+#{set title:'Bribes' /}
+#{set 'moreScripts'}
+<script src="@{'/public/javascripts/readmore.js'}" type="text/javascript" charset="UTF-8"></script>
+<script type="text/javascript">
+	$('article').readmore({
+	   speed: 75,
+	   maxHeight: 50,
+	   moreLink: "<a href='#'>&{'read.more'}</a>",
+	   lessLink: "<a href='#'>&{'read.less'}</a>"
+  	});
+</script>
+<script src="@{'/public/javascripts/chart.js'}" type="text/javascript" charset="UTF-8"></script>
+<script type="text/javascript">
+var polarData = [
+ 				{
+ 					value: 5,
+ 					color:"#F7464A",
+ 					highlight: "#FF5A5E",
+ 					label: "I paid a bribe"
+ 				},
+ 				{
+ 					value: 4,
+ 					color: "#46BFBD",
+ 					highlight: "#5AD3D1",
+ 					label: "I didn't pay a bribe"
+ 				},
+ 				{
+ 					value: 2,
+ 					color: "#FDB45C",
+ 					highlight: "#FFC870",
+ 					label: "I didn't have to pay a bribe"
+ 				}
+
+ 			];
+ 			
+ 			window.onload = function(){
+ 				var ctx = document.getElementById("chart-area-polar").getContext("2d");
+ 				window.myPolarArea = new Chart(ctx).PolarArea(polarData, {
+ 					responsive:true
+ 				});
+ 				ctx = document.getElementById("chart-area-pie").getContext("2d");
+ 				window.myPie = new Chart(ctx).Pie(polarData, {
+ 					responsive:true
+ 				});
+ 				ctx = document.getElementById("chart-area-doughnut").getContext("2d");
+ 				window.myPie = new Chart(ctx).Doughnut(polarData, {
+ 					responsive:true
+ 				});
+ 			};
+ 			
+</script>
+#{/set}
+<div class="container-fluid">
+	<div class="col-xs-12 col-md-10 col-md-offset-1 col-xs-offset-0">
+		<div class="row">
+			<div class="col-md-12">
+				<div id="canvas-holder" class="pull-right col-xs-12 col-md-4">
+					<canvas class="pull-right" id="chart-area-pie" width="300" height="300"/>
+				</div>
+				<div id="canvas-holder" class="pull-right col-xs-12 col-md-4">
+					<canvas class="pull-right" id="chart-area-polar" width="300" height="300"/>
+				</div>
+				<div id="canvas-holder" class="pull-right col-xs-12 col-md-4">
+					<canvas class="pull-right" id="chart-area-doughnut" width="300" height="300"/>
+				</div>
+			</div>
+			<div class="col-xs-12 col-md-4">
+				<h3>I paid a bribe</h3>
+				%{ for(i = 0; i < 4; i++) { }%
+				<div id="bribe-${i}" class="bribe">
+					<h4><a href="@{show(1)}">Bribe paid expensive</a></h4>
+					<span class="submitted">&{'submit.post.on', 'cheick-' + i, new Date()?.format() }</span>
+					<article>
+						<p>
+							Je suis très heureux de vous écrire ce message qui ne veut rien du tout mais il a le mérite d'être écrit par Moi.
+							Le moi ici ne veut rien dire d'autre que je suis content.
+							Je fais partie d'un grand groupe dont tout le monde en parle. Si tu n'es pas d'accord tu n'as qu'à venir me voir.
+							Et j'ai un petit problème à chanque fois que j'essaye d'écrire un f j'écris à place un v. Je ne comprends vraiment pas du tout. Si tu as une idée pour moi ça me fera vraiment du bien du moment que tu ne le sais pas toi même tu auras donc du mal à m'aider mais je compte quand même sur toi.
+						</p>
+					</article>
+				</div>
+				<hr/>
+				%{ } }%
+			</div>
+			
+			<div class="col-xs-12 col-md-4">
+				<h3>I didn't pay a bribe</h3>
+				%{ for(i = 0; i < 2; i++) { }%
+				<div id="bribe-${i}" class="bribe">
+					<h4><a href="@{show(1)}">Bribe not paid</a></h4>
+					<span class="submitted">&{'submit.post.on', 'ousmane-' + i, new Date()?.format() }</span>
+					<article>
+						<p>
+							Je suis très heureux de vous écrire ce message qui ne veut rien du tout mais il a le mérite d'être écrit par Moi.
+							Le moi ici ne veut rien dire d'autre que je suis content.
+							Je fais partie d'un grand groupe dont tout le monde en parle. Si tu n'es pas d'accord tu n'as qu'à venir me voir.
+							Et j'ai un petit problème à chanque fois que j'essaye d'écrire un f j'écris à place un v. Je ne comprends vraiment pas du tout. Si tu as une idée pour moi ça me fera vraiment du bien du moment que tu ne le sais pas toi même tu auras donc du mal à m'aider mais je compte quand même sur toi.
+						</p>
+					</article>
+				</div>
+				<hr/>
+				%{ } }%
+			</div>
+			
+			<div class="col-xs-12 col-md-4">
+				<h3>I didn't have to pay a bribe</h3>
+				%{ for(i = 0; i < 5; i++) { }%
+				<div id="bribe-${i}" class="bribe">
+					<h4><a href="@{show(1)}">Bribe didn't have to pay</a></h4>
+					<span class="submitted">&{'submit.post.on', 'elay-' + i, new Date()?.format() }</span>
+					<article>
+						<p>
+							Je suis très heureux de vous écrire ce message qui ne veut rien du tout mais il a le mérite d'être écrit par Moi.
+							Le moi ici ne veut rien dire d'autre que je suis content.
+							Je fais partie d'un grand groupe dont tout le monde en parle. Si tu n'es pas d'accord tu n'as qu'à venir me voir.
+							Et j'ai un petit problème à chanque fois que j'essaye d'écrire un f j'écris à place un v. Je ne comprends vraiment pas du tout. Si tu as une idée pour moi ça me fera vraiment du bien du moment que tu ne le sais pas toi même tu auras donc du mal à m'aider mais je compte quand même sur toi.
+						</p>
+					</article>
+				</div>
+				<hr/>
+				%{ } }%
+			</div>
+		</div>
+	</div>
+</div>

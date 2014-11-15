@@ -1,0 +1,51 @@
+#{extends 'main.html' /}
+#{set title:'Search' /}
+<div class="container-fluid">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-md-9">
+				#{if posts?.size()}
+				<h2>&{'Posts'}</h2>
+				#{list items:posts, as:'post'}
+				<h3><a href="@{Posts.show(post?.id)}">${post.title}</a></h3>
+				<span class="submitted">&{'submit.post.on', post.author.pseaudo, post.createDate?.format() }</span>
+				<article>
+					<p id="post-${post?.id}">
+						${post?.content?.raw()}
+					</p>
+				</article>
+				<hr/>
+				#{/list}
+				#{else}
+				<h3>&{'no.more.items'}</h3>
+				#{/else}
+				#{/if}
+				#{if bribes?.size()}
+				<h2>&{'Bribes'}</h2>
+				#{list items:bribes, as:'bribe'}
+				<h3><a href="@{Bribes.show(post?.id)}">${bribe.title}</a></h3>
+				<span class="submitted">&{'submit.post.on', bribe.author.pseaudo, bribe.createDate?.format() }</span>
+				<article>
+					<p id="post-${post?.id}">
+						${bribe?.description?.raw()}
+					</p>
+				</article>
+				<hr/>
+				#{/list}
+				#{else}
+				<h3>&{'no.more.items'}</h3>
+				#{/else}
+				#{/if}
+			</div>
+			<div class="col-xs-12 col-md-3">
+				<h2>&{'Recents'}</h2>
+				#{list models.Post.recents(5), as:'recent'}
+				<h4><a href="@{Posts.show(recent?.id)}">${recent.title}</a></h4>
+				<p>
+					${recent?.content?.tronk(50)?.raw()}
+				</p>
+				#{/list}
+			</div>
+		</div>
+	</div>
+</div>

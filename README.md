@@ -1,2 +1,23 @@
-surofinkele
-===========
+Les packages :
+- controllers :
+	- Admin : Pour controller l'adminitration
+	- {Model}s : Pour la gestion du Model dans l'administration.
+- notifiers
+	- Mails : Tout ce qui concerne les envois des mails.
+- services :
+	- AWSHelper : Pour la communication avec AWS S3
+	- BCrypt : Pour le cryptage des mots de passe.
+- utils :
+	- FieldAttached[Check] : Une annotation permettant d'imposer l'utilisation exactement un champ parmi les champs portant l'annotation.
+	- FieldGroup[Check] : La vérification de contenance d'un objet portant une annotation FieldGroup.For dans le champ portant FieldGroup
+- models :
+	- User : l'utiliseur
+	- Association : Une superclass pour les classe d'association.
+	- Attachment
+	- Bribe
+	- Data
+	- Comment
+	- Page
+	- Post
+	- {Model}Comment[Id] : La classe d'association entre Model et comment
+	- {Model}Attachment[Id] : La classe d'association entre Model et attachment
